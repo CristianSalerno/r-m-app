@@ -7,8 +7,8 @@ import CardComponent from './components/CardComponent';
 import './App.css';
 import LoadingComponent from './components/Loading/LoadingComponent';
 import Paginator from './components/Paginator/Paginator';
-import app from './firebase/base';
 import { SingUp } from './components/auth/SingUp';
+import { Login } from './components/auth/Login';
 
 function App() {
 	let [user, setUser] = useState('');
@@ -16,6 +16,8 @@ function App() {
 	let [loading, setLoading] = useState(true);
 	let [totalPages, setTotalPages] = useState(null);
 	let [page, setPage] = useState(1);
+
+	console.log(user);
 
 	useEffect(() => {
 		getCharacters(page)
@@ -34,9 +36,9 @@ function App() {
 		</div>
 	) : (
 		<>
-			<SingUp />
 			<div className="app_wrapper">
 				<UserContext.Provider value={user}>
+					{!!user ? <SingUp /> : <Login />}
 					{characters.map(character => {
 						return <CardComponent character={character} key={Math.random()} />;
 					})}
