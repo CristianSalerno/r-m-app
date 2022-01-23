@@ -36,8 +36,10 @@ function App() {
 					{characters.map(character => {
 						return <CardComponent character={character} key={Math.random()} />;
 					})}
+					<div className="paginator_container">
+						<Paginator pages={totalPages} changePage={page => setPage(page)} />
+					</div>
 				</CharacterContext.Provider>
-				<Paginator pages={totalPages} changePage={page => setPage(page)} />
 			</div>
 		</>
 	);

@@ -8,7 +8,13 @@
 .app_wrapper {
 	display: flex;
 	flex-wrap: wrap;
-	flex-direction: column;
+	height: 90vh;
 	justify-content: center;
 	margin: 10px;
+}
+.paginator_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
