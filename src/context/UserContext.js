@@ -1,9 +1,9 @@
 import { createContext } from 'react';
 
-const CharacterContext = createContext({
+const UserContext = createContext({
 	characters: [],
 	pages: null,
 	loading: true,
 });
 
-export default CharacterContext;
+export default UserContext;

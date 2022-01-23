@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CharacterContext from './context/CharacterContext';
+import UserContext from './context/UserContext';
 import getCharacters from './context/actions/getCharacters';
 import CardComponent from './components/CardComponent';
 
@@ -7,8 +7,11 @@ import CardComponent from './components/CardComponent';
 import './App.css';
 import LoadingComponent from './components/Loading/LoadingComponent';
 import Paginator from './components/Paginator/Paginator';
+import app from './firebase/base';
+import { SingUp } from './components/auth/SingUp';
 
 function App() {
+	let [user, setUser] = useState('');
 	let [characters, setCharacters] = useState([]);
 	let [loading, setLoading] = useState(true);
 	let [totalPages, setTotalPages] = useState(null);
@@ -31,15 +34,16 @@ function App() {
 		</div>
 	) : (
 		<>
+			<SingUp />
 			<div className="app_wrapper">
-				<CharacterContext.Provider value={characters}>
+				<UserContext.Provider value={user}>
 					{characters.map(character => {
 						return <CardComponent character={character} key={Math.random()} />;
 					})}
 					<div className="paginator_container">
 						<Paginator pages={totalPages} changePage={page => setPage(page)} />
 					</div>
-				</CharacterContext.Provider>
+				</UserContext.Provider>
 			</div>
 		</>
 	);
