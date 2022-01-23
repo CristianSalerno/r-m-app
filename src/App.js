@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import CharacterContext from './context/CharacterContext';
+import getCharacters from './context/actions/getCharacters';
+import CardComponent from './components/CardComponent';
+
+//Styles
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	let [characters, setCharacters] = useState([]);
+	useEffect(() => {
+		getCharacters().then(res => setCharacters(res.results));
+	}, []);
+
+	return (
+		<div className="app_wrapper">
+			<CharacterContext.Provider value={characters}>
+				{characters.map(character => {
+					return <CardComponent character={character} />;
+				})}
+			</CharacterContext.Provider>
+		</div>
+	);
 }
 
 export default App;
