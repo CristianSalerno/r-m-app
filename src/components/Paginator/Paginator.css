@@ -1,0 +1,7 @@
+.paginator {
+	display: flex;
+}
+.paginator li {
+	margin: 10px;
+	cursor: pointer;
+}

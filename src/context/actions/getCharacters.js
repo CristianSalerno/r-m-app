@@ -1,7 +1,7 @@
-const URL = 'https://rickandmortyapi.com/api/character';
-
-export default async function getCharacters() {
-	const response = await fetch(URL)
+export default async function getCharacters(page) {
+	const response = await fetch(
+		`https://rickandmortyapi.com/api/character?page=${page}`,
+	)
 		.then(res => res.json())
 		.then(data => data);
 	return response;
