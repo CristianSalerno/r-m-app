@@ -1,3 +1,10 @@
+.loading-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90vh;
+	width: 100%;
+}
 .app_wrapper {
 	display: flex;
 	flex-wrap: wrap;

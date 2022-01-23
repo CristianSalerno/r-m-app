@@ -1,12 +1,9 @@
-import useCharacter from '../hooks/useCharacter';
 import './CardComponent.css';
 
 export default function CardComponent(props) {
-	const character = useCharacter();
-
 	return (
 		<div className="container">
-			<img src={props.character.image} />
+			<img src={props.character.image} alt="character img" />
 			<h3>{props.character.name}</h3>
 			<p>{props.character.gender}</p>
 			<p>{props.character.species}</p>

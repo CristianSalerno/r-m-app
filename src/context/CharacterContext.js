@@ -1,8 +1,8 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 const CharacterContext = createContext({
 	characters: [],
-	loading: false,
+	loading: true,
 });
 
 export default CharacterContext;
